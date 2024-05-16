@@ -3,7 +3,7 @@
 const audioNotify = document.createElement("audio");
 audioNotify.id = "audioNotify";
 audioNotify.style.display = "none";
-audioNotify.src = "assets/sounds/notify.mp3"; // Caminho padrão do áudio
+audioNotify.src = "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3"; // Caminho padrão do áudio
 document.body.appendChild(audioNotify);
 
 // Cria e adiciona o contêiner de notificações
@@ -15,7 +15,7 @@ const max_notifications = 1; // Define o número máximo de notificações visí
 
 function playNotificationSound(type) {
     const audioPaths = {
-        error: "assets/sounds/notify.mp3",
+        error: "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3",
         // Inclua outros tipos de notificação e seus respectivos sons aqui
     };
 
