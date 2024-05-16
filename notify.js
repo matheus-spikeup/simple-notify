@@ -51,7 +51,7 @@ function showNotification(type, message) {
     const notifyIconDiv = document.createElement("div");
     notifyIconDiv.classList.add("notify-icon");
     const iconImg = document.createElement("img");
-    iconImg.src = "assets/images/icons/xmark.gif"; // Imagem padrão do ícone
+    iconImg.src = "https://matheus-spikeup.github.io/simple-notify/assets/images/icons/xmark.gif"; // Imagem padrão do ícone
     iconImg.alt = "Close Icon";
     notifyDiv.classList.add(type);
 
