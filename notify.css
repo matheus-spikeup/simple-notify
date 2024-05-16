@@ -1,0 +1,120 @@
+#notification-container {
+    position: fixed;
+    top: 10px;
+    right: 30px;
+    max-width: 300px;
+    z-index: 98;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notify {
+    width: 320px;
+    height: 65px;
+    padding: 0.8rem 1rem;
+    background-color: #F0A009;
+    display: flex;
+    gap: 10px;
+    border-radius: 5px;
+    animation: notifyEntrance .5s forwards;
+    transition: all .5s;
+    color: #fff;
+    font-weight: 500;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 700px) {
+
+    body.active #notification-container,
+    #notification-container {
+        z-index: 100;
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.notify .notify-contents p {
+    word-wrap: break-word;
+}
+
+.notify .notify-icon {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notify.exit {
+    animation: notifyExit 1s forwards;
+}
+
+.notify .notify-icon img {
+    max-width: 35px;
+    filter: drop-shadow(2px 1px 0 white) drop-shadow(-2px 1px 0 white) drop-shadow(0px -2px 0 white);
+}
+
+.notify .progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.11);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.notify .progress-bar .bar {
+    width: 0;
+    height: 100%;
+    background-color: white;
+    transition: width 5s linear;
+}
+
+.notify .progress-bar .bar.increase-width {
+    width: 100%;
+}
+
+
+@keyframes notifyEntrance {
+    from {
+        transform: translateX(100%) translateY(0);
+    }
+
+    to {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+@keyframes notifyExit {
+    from {
+        transform: translateX(0) translateY(0);
+    }
+
+    to {
+        transform: translateX(150%) translateY(0);
+    }
+}
+
+
+.notify.success {
+    background-color: #4CAF50;
+}
+
+.notify.error {
+    background-color: #dc3545;
+}
+
+.notify.info {
+    background-color: #2B60A0;
+}
+
+.notify.worn {
+    background-color: #c7a85a;
+}
