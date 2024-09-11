@@ -10,8 +10,9 @@
 }
 
 .notify {
-    width: 320px;
-    height: 65px;
+    width: 100%;
+    max-width: 320px;
+    min-height: 65px;
     padding: 0.8rem 1rem;
     background-color: #F0A009;
     display: flex;
@@ -45,8 +46,6 @@
 }
 
 .notify .notify-icon {
-    width: 50px;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,7 +56,7 @@
 }
 
 .notify .notify-icon img {
-    max-width: 35px;
+    max-width: 25px;
     filter: drop-shadow(2px 1px 0 white) drop-shadow(-2px 1px 0 white) drop-shadow(0px -2px 0 white);
 }
 
