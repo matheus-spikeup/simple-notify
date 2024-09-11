@@ -1,9 +1,11 @@
+// Cria e adiciona o elemento de áudio
 const audioNotify = document.createElement("audio");
 audioNotify.id = "audioNotify";
 audioNotify.style.display = "none";
 audioNotify.src = "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3"; // Caminho padrão do áudio
 document.body.appendChild(audioNotify);
 
+// Cria e adiciona o contêiner de notificações
 const notifyContainer = document.createElement("div");
 notifyContainer.id = "notification-container";
 document.body.appendChild(notifyContainer);
@@ -14,7 +16,7 @@ function playNotificationSound(type) {
     const audioPaths = {
         error: "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3",
         success: "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3",
-        warning: "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3",
+        info: "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3",
         // Outros tipos de notificação
     };
 
@@ -23,12 +25,14 @@ function playNotificationSound(type) {
         return;
     }
 
+    // Interrompe qualquer áudio que esteja tocando e reseta a posição
     if (!audioNotify.paused) {
         audioNotify.pause();
         audioNotify.currentTime = 0;
     }
 
     audioNotify.src = audioPaths[type];
+    // Espera o áudio ser carregado antes de tocar
     audioNotify.onloadeddata = () => {
         audioNotify.play().catch(error => {
             console.error("Erro ao reproduzir o áudio: ", error);
@@ -43,6 +47,10 @@ function showNotification(type, message) {
 
     const notifyDiv = document.createElement("div");
     notifyDiv.classList.add("notify");
+
+    // Adiciona uma classe baseada no tipo de notificação (error, success, etc.)
+    notifyDiv.classList.add(type);
+
     notifyDiv.addEventListener("click", hideNotification);
 
     const notifyIconDiv = document.createElement("div");
@@ -50,9 +58,9 @@ function showNotification(type, message) {
 
     // Mapeamento de ícones para diferentes tipos de notificação
     const iconPaths = {
-        error: "https://matheus-spikeup.github.io/simple-notify/assets/images/error.png",
-        success: "https://matheus-spikeup.github.io/simple-notify/assets/images/success.png",
-        info: "https://matheus-spikeup.github.io/simple-notify/assets/images/info.png",
+        error: "https://matheus-spikeup.github.io/simple-notify/assets/images/error.svg",
+        success: "https://matheus-spikeup.github.io/simple-notify/assets/images/success.svg",
+        info: "https://matheus-spikeup.github.io/simple-notify/assets/images/info.svg",
         // Outros tipos de ícones
     };
 
