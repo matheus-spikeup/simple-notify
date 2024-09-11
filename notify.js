@@ -1,22 +1,21 @@
-
-// Cria e adiciona o elemento de áudio
 const audioNotify = document.createElement("audio");
 audioNotify.id = "audioNotify";
 audioNotify.style.display = "none";
 audioNotify.src = "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3"; // Caminho padrão do áudio
 document.body.appendChild(audioNotify);
 
-// Cria e adiciona o contêiner de notificações
 const notifyContainer = document.createElement("div");
 notifyContainer.id = "notification-container";
 document.body.appendChild(notifyContainer);
 
-const max_notifications = 1; // Define o número máximo de notificações visíveis ao mesmo tempo
+const max_notifications = 3; // Define o número máximo de notificações visíveis ao mesmo tempo
 
 function playNotificationSound(type) {
     const audioPaths = {
         error: "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3",
-        // Inclua outros tipos de notificação e seus respectivos sons aqui
+        success: "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3",
+        warning: "https://matheus-spikeup.github.io/simple-notify/assets/sounds/notify.mp3",
+        // Outros tipos de notificação
     };
 
     if (!audioPaths.hasOwnProperty(type)) {
@@ -24,14 +23,12 @@ function playNotificationSound(type) {
         return;
     }
 
-    // Interrompe qualquer áudio que esteja tocando e reseta a posição
     if (!audioNotify.paused) {
         audioNotify.pause();
         audioNotify.currentTime = 0;
     }
 
     audioNotify.src = audioPaths[type];
-    // Espera o áudio ser carregado antes de tocar
     audioNotify.onloadeddata = () => {
         audioNotify.play().catch(error => {
             console.error("Erro ao reproduzir o áudio: ", error);
@@ -50,10 +47,18 @@ function showNotification(type, message) {
 
     const notifyIconDiv = document.createElement("div");
     notifyIconDiv.classList.add("notify-icon");
+
+    // Mapeamento de ícones para diferentes tipos de notificação
+    const iconPaths = {
+        error: "https://matheus-spikeup.github.io/simple-notify/assets/images/error.png",
+        success: "https://matheus-spikeup.github.io/simple-notify/assets/images/success.png",
+        info: "https://matheus-spikeup.github.io/simple-notify/assets/images/info.png",
+        // Outros tipos de ícones
+    };
+
     const iconImg = document.createElement("img");
-    iconImg.src = "https://matheus-spikeup.github.io/simple-notify/assets/images/xmark.gif"; // Imagem padrão do ícone
-    iconImg.alt = "Close Icon";
-    notifyDiv.classList.add(type);
+    iconImg.src = iconPaths[type] || "https://matheus-spikeup.github.io/simple-notify/assets/images/default-icon.png"; // Define um ícone padrão caso o tipo seja desconhecido
+    iconImg.alt = `${type} Icon`;
 
     const notifyContentsDiv = document.createElement("div");
     notifyContentsDiv.classList.add("notify-contents");
