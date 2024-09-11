@@ -10,7 +10,7 @@ const notifyContainer = document.createElement("div");
 notifyContainer.id = "notification-container";
 document.body.appendChild(notifyContainer);
 
-const max_notifications = 3; // Define o número máximo de notificações visíveis ao mesmo tempo
+const max_notifications = 1; // Define o número máximo de notificações visíveis ao mesmo tempo
 
 function playNotificationSound(type) {
     const audioPaths = {
