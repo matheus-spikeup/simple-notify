@@ -10,13 +10,12 @@
 }
 
 .notify {
-    width: 100%;
-    max-width: 320px;
+    width: 320px;
     min-height: 65px;
     padding: 0.8rem 1rem;
     background-color: #F0A009;
     display: flex;
-    gap: 10px;
+    gap: 20px;
     border-radius: 5px;
     animation: notifyEntrance .5s forwards;
     transition: all .5s;
